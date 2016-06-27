@@ -1,14 +1,31 @@
 /**
  * Created by nanzhao on 6/26/16.
  */
-import {Component, Input}  from '@angular/core';
-import {User} from './user.list.service';
+import {Directive, Input, ElementRef, HostListener}  from '@angular/core';
 
-@Component({
-  selector: 'user-detail',
-  templateUrl: 'app/user/user.detail.html',
+@Directive({
+  selector: '[myHighlight]',
+  //templateUrl: 'app/user/user.detail.html',
 })
-export class UserDetailComponent {
-  @Input() active_user:User;
+export class MyHighlightDirective {
+  private _defaultColor = 'red';
+  private el:HTMLElement;
 
+  @Input('myHighlight') highLightColor:string;
+
+  constructor(element:ElementRef) {
+    this.el = element.nativeElement;
+  }
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.highlight(this.highlightColor || this._defaultColor);
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.highlight(null);
+  }
+
+  private highlight(color:string) {
+    this.el.style.backgroundColor = color;
+  }
 }
