@@ -7,6 +7,7 @@ import { MyHighlightDirective } from '../directive/myHighlight';
 @Component({
   selector: 'user-detail',
   templateUrl: 'app/user/user.detail.html',
+  styleUrls: ['app/style/user.detail.component.css'],
   directives: [MyHighlightDirective],
 })
 export class UserDetailComponent {

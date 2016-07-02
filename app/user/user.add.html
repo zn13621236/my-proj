@@ -1,0 +1,10 @@
+<div>
+  <ul>
+    <li>Please add user here:</li>
+    <input [(ngModel)]="user.userName"/>
+    <li>username: {{user.userName}}</li>
+    <input [(ngModel)]="user.passWord"/>
+    <li>passWord: {{user.passWord}}</li>
+  </ul>
+  <button (click)="addUser(user)">add user</button>
+</div>
